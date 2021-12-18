@@ -8,30 +8,31 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class PlanDatabase extends SQLiteOpenHelper {
 
     public SQLiteDatabase sld;
-   public static PlanDatabase pd;
+    public static PlanDatabase pd;
     public PlanDatabase(Context c) {
         super(c, "planIt", null, 1);
         sld = getWritableDatabase();
     }
- public static PlanDatabase getInstance(Context c) {
-  if(pd == null) {
-    pd = new PlanDatabase(c);
-  }
-  return pd;
- }
+    public static PlanDatabase getInstance(Context c) {
+        if(pd == null) {
+            pd = new PlanDatabase(c);
+        }
+        return pd;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-      db.execSQL("CREATE TABLE plans ( id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, description TEXT, dat TEXT )");
+        db.execSQL("CREATE TABLE plans ( id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, description TEXT, dat TEXT )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    db.execSQL("DROP TABLE IF EXISTS plans");
-    onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS plans");
+        onCreate(db);
     }
+
     public long add(String plan, String description, String date) {
-		SQLiteDatabase sld = this.getWritableDatabase();
+        SQLiteDatabase sld = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("task", plan);
         cv.put("description", description);

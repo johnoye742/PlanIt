@@ -35,7 +35,6 @@ public class MainActivity extends Activity {
     @SuppressLint({"NonConstantResourceId", "InflateParams"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             tf = Typeface.createFromAsset(getAssets(), "fonts/MavenPro.ttf");
@@ -55,19 +54,11 @@ public class MainActivity extends Activity {
 
                 if(c != null && c.getCount() > 0) {
                     while (c.moveToNext()) {
-                        Toast.makeText(this, c.getString(c.getColumnIndex("plan")), Toast.LENGTH_SHORT).show();
-                        tv.setText(c.getString(c.getColumnIndex("plan")));
+                        Toast.makeText(this, c.getString(2), Toast.LENGTH_SHORT).show();
+                        tv.setText(c.getString(2));
                     }
-                } else {
-                    Toast.makeText(this, "shit didn't work", Toast.LENGTH_SHORT).show();
+                    c.close();
                 }
-
-
-
-            c.close();
-        } catch (Exception ignored) {
-
-        }
     }
 
     @SuppressLint("NonConstantResourceId")
