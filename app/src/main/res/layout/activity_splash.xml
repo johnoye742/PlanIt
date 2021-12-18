@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/box_inset_layout_padding"
+android:animateLayoutChanges="true">
+
+        <ImageView android:layout_width="150dp" android:layout_height="150dp"
+android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+                   android:contentDescription="@string/title_activity_splash"
+                   android:src="@mipmap/ic_launcher"
+        android:id="@+id/imv3"/>
+        <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imv3"
+                android:layout_marginTop="8dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:text="@string/plan_your_everyday"/>
+        <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="8dp"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:text="@string/by_john_oye"/>
+
+</RelativeLayout>

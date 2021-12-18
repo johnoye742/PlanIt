@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+android:layout_height="match_parent">
+    <Toolbar android:layout_width="match_parent" android:layout_height="wrap_content"
+             android:titleTextColor="@color/white"
+             android:title="@string/plan_it_about_me"
+             android:titleTextAppearance="@android:style/TextAppearance.Large"
+             android:elevation="10dp"
+             android:id="@+id/tb1"
+             android:background="@drawable/tb"
+             android:layout_marginStart="5dp"
+             android:layout_marginEnd="5dp"
+    />
+
+    <TextView android:id="@+id/tv1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:text="@string/app_name"
+              android:textSize="35sp"
+
+              android:layout_below="@id/tb1"/>
+    <TextView android:id="@+id/tv2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:text="@string/lead_developer"
+              android:textSize="35sp"
+              android:textColor="@color/black"
+              android:layout_below="@id/tv1"/>
+    <ImageView
+            android:id="@+id/imv"
+            android:layout_width="200dp" android:layout_height="200dp"
+               android:maxWidth="200dp"
+               android:maxHeight="200dp"
+               android:src="@drawable/john"
+               android:layout_below="@id/tv2" android:layout_centerHorizontal="true"
+               android:layout_marginTop="7dp"
+               android:contentDescription="@string/lead_developer_john_oye"/>
+
+    <TextView android:id="@+id/tv3" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:text="@string/john_oye"
+              android:textSize="35sp"
+              android:textColor="@color/black"
+              android:layout_below="@id/imv"/>
+    <TextView android:id="@+id/tv4" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:text="@string/about_me"
+              android:layout_margin="10dp"
+              android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+              android:textColor="@color/black"
+              android:layout_below="@id/tv3"/>
+
+</RelativeLayout>
