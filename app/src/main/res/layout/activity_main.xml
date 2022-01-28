@@ -6,14 +6,11 @@
     android:id="@+id/rl"
 >
 <Toolbar android:layout_width="match_parent" android:layout_height="wrap_content"
-         android:titleTextColor="@color/white"
-         android:title="@string/plan_it_by_john_oye"
-         android:titleTextAppearance="@android:style/TextAppearance.Large"
+         
          android:elevation="10dp"
          android:id="@+id/tb"
          android:background="@drawable/tb"
-         android:layout_marginStart="5dp"
-         android:layout_marginEnd="5dp"
+
          />
     <TextView android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content"
     style="@android:style/TextAppearance.DeviceDefault.Large"
@@ -25,21 +22,19 @@
     <TextView android:id="@+id/subtitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
     style="@android:style/TextAppearance.DeviceDefault.Large"
     android:text="@string/no_tasks_available"
-    
+
     android:layout_marginBottom="7dp"/>
     </ScrollView>
+
     <ListView android:id="@+id/lv"
 	android:layout_below="@id/title" 
 	android:layout_width="match_parent" 
 	android:layout_height="match_parent"
-	android:visibility="gone"/>
- <include
-         android:layout_below="@id/scrl"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         layout="@layout/a4"
-         android:layout_margin="10dp"
-     />
+              android:divider="@android:color/transparent"
+              android:footerDividersEnabled="false"
+              android:headerDividersEnabled="false"
+	android:visibility="visible"/>
+
 <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true"
 android:background="@drawable/button"
              android:id="@+id/button"

@@ -10,8 +10,7 @@ android:layout_height="match_parent">
              android:elevation="10dp"
              android:id="@+id/tb1"
              android:background="@drawable/tb"
-             android:layout_marginStart="5dp"
-             android:layout_marginEnd="5dp"
+
     />
 
     <TextView android:id="@+id/tv1" android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -22,7 +21,7 @@ android:layout_height="match_parent">
               android:layout_below="@id/tb1"/>
     <TextView android:id="@+id/tv2" android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:layout_centerHorizontal="true"
-              android:text="@string/lead_developer"
+              android:text="Developer"
               android:textSize="35sp"
               android:textColor="@color/black"
               android:layout_below="@id/tv1"/>

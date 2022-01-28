@@ -35,4 +35,5 @@
     <string name="by_john_oye">BY JOHN OYE</string>
     <string name="t_name">Task Name</string>
     <string name="enter_task_time_hour_minute_second">Enter Task Time (hour:minute:second)</string>
+    <string name="save">Save</string>
 </resources>

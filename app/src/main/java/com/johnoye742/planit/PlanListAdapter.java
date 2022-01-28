@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -45,21 +46,60 @@ public PlanDataModel c(int i) {
 
         return (PlanDataModel) getItem(i);
 }
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "ViewHolder"})
     @Override
     public View getView(int position, View v, ViewGroup parent) {
+        if(v == null) {
+            LayoutInflater li = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = li.inflate(R.layout.a1, parent, false);
+            TextView tsk = v.findViewById(R.id.task);
+            tsk.setText(al.get(position).plan);
+            ImageView imv = v.findViewById(R.id.imv2);
+            dbm = new PlanDatabase(c);
+            PopupMenu.OnMenuItemClickListener mi = (item) -> {
+                switch (item.getItemId()) {
+                    case R.id.delete:
+                     dbm.delete(al.get(position).plan, al.get(position).description);
 
+                     break;
+                    case R.id.details:
+                        AlertDialog.Builder ab = new AlertDialog.Builder(c);
+                        ab.setTitle("Task Details");
+                        String s1 = "Task Name : " + al.get(position).plan + "\n\nTask Description : " + al.get(position).description + "\n\nTime of task : " + al.get(position).time;
+                        ab.setMessage(s1);
+                        ab.setPositiveButton("OK", (a, b) -> {
+
+                        });
+                        ab.create().show();
+                     break;
+                    case R.id.edit:
+                        Intent intent = new Intent(c, EditTask.class);
+                        intent.setAction("com.johnoye742.planit.edit");
+                        intent.putExtra("title", al.get(position).plan);
+                        intent.putExtra("descr", al.get(position).description);
+                        intent.putExtra("time", al.get(position).time);
+                        c.startActivity(intent);
+                        break;
+                }
+                return false;
+            };
+            imv.setOnClickListener((v1) -> {
+                PopupMenu pm = new PopupMenu(c, imv);
+                pm.inflate(R.menu.menu_list);
+                pm.setOnMenuItemClickListener(mi);
+                pm.show();
+            });
+            View finalV = v;
+            v.setOnLongClickListener((v2) -> {
+                PopupMenu pm = new PopupMenu(c, finalV);
+                pm.inflate(R.menu.menu_list);
+                pm.setOnMenuItemClickListener(mi);
+                pm.show();
+                return false;
+            });
+        }
         return v;
 }
 
 }
-class Vars {
-    TextView task;
 
-    ImageView imv2;
-    Typeface tf;
-    Vars() {
-
-    }
-
-}

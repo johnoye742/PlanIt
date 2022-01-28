@@ -3,11 +3,13 @@ package com.johnoye742.planit;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,31 +46,45 @@ public class MainActivity extends Activity {
             fl = findViewById(R.id.button);
             tv = findViewById(R.id.subtitle);
             rl = findViewById(R.id.rl);
+            tb.setTitle(R.string.plan_it_by_john_oye);
+            setActionBar(tb);
+            
             tv.setTypeface(tf);
             ((TextView) findViewById(R.id.title)).setTypeface(tf);
-            pd = PlanDatabase.getInstance(this);
+            pd = new PlanDatabase(this);
             fl.setOnClickListener((v) -> {
-             Toast.makeText(this, Long.toString(pd.add("he", "kd", "ew")), Toast.LENGTH_SHORT).show();
+              Intent i = new Intent(MainActivity.this, AddTask.class);
+              startActivity(i);
             });
             SQLiteDatabase sld = pd.getReadableDatabase();
+            al = new ArrayList<>();
+            pla = new PlanListAdapter(this, al);
             Cursor c = sld.rawQuery("SELECT * FROM plans", null);
 
                 if(c != null && c.getCount() > 0) {
-                    while (c.moveToNext()) {
-                        Toast.makeText(this, c.getString(c.getColumnIndex("plan")), Toast.LENGTH_SHORT).show();
-                        tv.setText(c.getString(c.getColumnIndex("plan")));
+
+                    while(c.moveToNext()) {
+                        al.add(new PlanDataModel(c.getString(1), c.getString(2), c.getString(3)));
                     }
+                    c.close();
                 } else {
-                    Toast.makeText(this, "shit didn't work", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "No plans have been added yet.\nClick the + button to add an item!", Toast.LENGTH_SHORT).show();
+                }
+
+                if(al.size() != 0) {
+                    tv.setVisibility(View.GONE);
+                    lv.setVisibility(View.VISIBLE);
+                    lv.setAdapter(pla);
                 }
 
 
 
-            c.close();
+            
         } catch (Exception ignored) {
 
         }
     }
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
