@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:icon="@drawable/ic_redo" android:title="Reload" android:showAsAction="always" android:id="@+id/reload"/>
     <item android:title="@string/about_developer" android:orderInCategory="1" android:id="@+id/about" android:showAsAction="never"/>
     <item android:title="@string/exit" android:orderInCategory="2" android:id="@+id/exit" android:showAsAction="never"/>
 

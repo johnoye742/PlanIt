@@ -11,6 +11,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.PlanIt">
+        <service
+                android:name=".DeleteService"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+        <service
+                android:name=".DeleteServise"
+                android:exported="false">
+        </service>
+
         <activity android:name=".EditTask">
         </activity>
 

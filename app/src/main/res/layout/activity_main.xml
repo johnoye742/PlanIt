@@ -10,7 +10,7 @@
          android:elevation="10dp"
          android:id="@+id/tb"
          android:background="@drawable/tb"
-
+         android:titleTextColor="@color/white"
          />
     <TextView android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content"
     style="@android:style/TextAppearance.DeviceDefault.Large"

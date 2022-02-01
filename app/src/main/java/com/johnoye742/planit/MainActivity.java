@@ -110,6 +110,10 @@ public class MainActivity extends Activity {
             case R.id.exit:
                 finish();
                 break;
+            case R.id.reload:
+                Toast.makeText(this, "Reloading...", Toast.LENGTH_SHORT).show();
+                recreate();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

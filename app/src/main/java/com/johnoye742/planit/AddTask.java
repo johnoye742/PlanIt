@@ -11,6 +11,7 @@ import android.widget.*;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 public class AddTask extends Activity {
     String AM_PM;
@@ -49,14 +50,12 @@ public class AddTask extends Activity {
                     ap = 0;
                     a = "0";
                 } else {
-                    if(hourOfDay == 12) {
-                        hourOfDay = 12;
-                    }
+
                     AM_PM = "PM";
                     ap = 1;
                     a = "";
                 }
-                cal.set(Calendar.HOUR, hourOfDay);
+                cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
                 cal.set(Calendar.AM_PM, ap);
                 String s = cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + " " + AM_PM;
@@ -75,10 +74,13 @@ public class AddTask extends Activity {
                 Intent i2 = new Intent(AddTask.this, AlarmReceiver.class);
                 i2.putExtra("task", task.getText().toString());
                 i2.putExtra("descr", description.getText().toString());
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(AddTask.this, 0, i2, 0);
+
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(AddTask.this, (int) System.currentTimeMillis(), i2, PendingIntent.FLAG_UPDATE_CURRENT);
                 am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+
                 Intent i = new Intent(AddTask.this, MainActivity.class);
                 startActivity(i);
+                finish();
             } else {
                 Toast.makeText(AddTask.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }

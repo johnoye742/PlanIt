@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.*;
 
@@ -56,7 +57,8 @@ String time;
                     ap = 1;
                     a = "";
                 }
-                cal.set(Calendar.HOUR, hourOfDay);
+                
+                cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
                 cal.set(Calendar.AM_PM, ap);
                 String s = a + cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + " " + AM_PM;
@@ -88,10 +90,11 @@ String time;
                 Intent i2 = new Intent(EditTask.this, AlarmReceiver.class);
                 i2.putExtra("task", txt1.getText().toString());
                 i2.putExtra("descr", txt3.getText().toString());
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(EditTask.this, 0, i2, 0);
-                am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(EditTask.this, (int) SystemClock.currentThreadTimeMillis(), i2, 0);
+                am.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
                 Intent i3 = new Intent(EditTask.this, MainActivity.class);
                 startActivity(i3);
+                finish();
             } else {
                 Toast.makeText(EditTask.this, "Please make sure you fill all fields!", Toast.LENGTH_SHORT).show();
             }

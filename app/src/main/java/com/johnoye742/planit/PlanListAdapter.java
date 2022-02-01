@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,13 +13,14 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PlanListAdapter extends BaseAdapter {
    private final ArrayList<PlanDataModel> al;
    
    PlanDatabase dbm;
    Context c;
-
+   int[] colors = new int[] {Color.BLACK, Color.rgb(10, 200, 1), Color.BLUE, Color.YELLOW};
 
     public PlanListAdapter(Context c, ArrayList<PlanDataModel> al) {
        this.al = al;
@@ -54,12 +56,19 @@ public PlanDataModel c(int i) {
             v = li.inflate(R.layout.a1, parent, false);
             TextView tsk = v.findViewById(R.id.task);
             tsk.setText(al.get(position).plan);
+            tsk.setTextColor(colors[new Random().nextInt(colors.length)]);
             ImageView imv = v.findViewById(R.id.imv2);
             dbm = new PlanDatabase(c);
             PopupMenu.OnMenuItemClickListener mi = (item) -> {
                 switch (item.getItemId()) {
                     case R.id.delete:
-                     dbm.delete(al.get(position).plan, al.get(position).description);
+                        AlertDialog.Builder ab2 = new AlertDialog.Builder(c);
+                        ab2.setTitle("Delete?");
+                        ab2.setMessage("Are you really sure you want to delete task : " +al.get(position).plan);
+                        ab2.setPositiveButton("Delete", (a, b) -> dbm.delete(al.get(position).plan, al.get(position).description));
+                        ab2.setNegativeButton("Cancel", (a, b) -> {
+                         ab2.create().show();
+                        });
 
                      break;
                     case R.id.details:

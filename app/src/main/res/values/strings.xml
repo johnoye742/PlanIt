@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Plan It</string>
-    <string name="plan_it_by_john_oye">PLAN IT by John Oye</string>
+    <string name="plan_it_by_john_oye">PLAN IT</string>
     <string name="add_button">Add Button</string>
     <string name="clock_icon">Clock Icon</string>
     <string name="_0">0.</string>
@@ -18,8 +18,7 @@
     <string name="lead_developer_john_oye">Lead Developer : John Oye</string>
     <string name="about_developer">About Developer</string>
     <string name="exit">Exit</string>
-    <string name="about_me">I am a young teenage freelancing front end developer. I have been coding for 2 years.
-        <br/>
+    <string name="about_me">I am a 13 years old native app and web developer. I have been coding for 2 years.<br/>
         <br/>I make Android Applications and Web Designs.
         <br/>
     </string>
