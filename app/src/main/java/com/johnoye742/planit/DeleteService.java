@@ -6,12 +6,14 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 public class DeleteService extends Service {
+    Intent i;
     public DeleteService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
+        
         return null;
     }
 
@@ -22,6 +24,11 @@ public class DeleteService extends Service {
         Toast.makeText(getApplicationContext(), "Task has been deleted", Toast.LENGTH_SHORT).show();
         return super.onStartCommand(intent, flags, startId);
 
+
+    }
+
+    @Override
+    public void onCreate() {
 
     }
 }

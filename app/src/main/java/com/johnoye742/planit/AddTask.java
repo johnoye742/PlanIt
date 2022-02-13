@@ -47,18 +47,16 @@ public class AddTask extends Activity {
                 String a = "0";
                 if(hourOfDay < 12) {
                     AM_PM = "AM";
-                    ap = 0;
-                    a = "0";
+                    
                 } else {
 
                     AM_PM = "PM";
-                    ap = 1;
-                    a = "";
+                   
                 }
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
-                cal.set(Calendar.AM_PM, ap);
-                String s = cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + " " + AM_PM;
+                
+                String s = cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE);
                 time.setText(s);
             });
         }  );

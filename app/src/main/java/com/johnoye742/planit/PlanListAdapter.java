@@ -20,7 +20,7 @@ public class PlanListAdapter extends BaseAdapter {
    
    PlanDatabase dbm;
    Context c;
-   int[] colors = new int[] {Color.BLACK, Color.rgb(10, 200, 1), Color.BLUE, Color.YELLOW};
+   int[] colors = new int[] {Color.BLACK, Color.rgb(10, 200, 1), Color.BLUE, Color.rgb(20, 10, 5)};
 
     public PlanListAdapter(Context c, ArrayList<PlanDataModel> al) {
        this.al = al;
@@ -57,6 +57,9 @@ public PlanDataModel c(int i) {
             TextView tsk = v.findViewById(R.id.task);
             tsk.setText(al.get(position).plan);
             tsk.setTextColor(colors[new Random().nextInt(colors.length)]);
+            Typeface tf = Typeface.createFromAsset(c.getAssets(), "fonts/MavenPro.ttf", TypeFace.BOLD);
+            tsk.setTypeface(tf);
+
             ImageView imv = v.findViewById(R.id.imv2);
             dbm = new PlanDatabase(c);
             PopupMenu.OnMenuItemClickListener mi = (item) -> {
@@ -67,9 +70,9 @@ public PlanDataModel c(int i) {
                         ab2.setMessage("Are you really sure you want to delete task : " +al.get(position).plan);
                         ab2.setPositiveButton("Delete", (a, b) -> dbm.delete(al.get(position).plan, al.get(position).description));
                         ab2.setNegativeButton("Cancel", (a, b) -> {
-                         ab2.create().show();
+                         
                         });
-
+                        ab2.create().show();
                      break;
                     case R.id.details:
                         AlertDialog.Builder ab = new AlertDialog.Builder(c);

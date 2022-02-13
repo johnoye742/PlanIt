@@ -90,6 +90,6 @@
             android:background="@drawable/d4"
             android:textColor="@color/white"
             android:id="@+id/save"
-            style="?android:selectableItemBackgroundBorderless"/>
+            style="?android:selectableItemBackground"/>
 
 </RelativeLayout>

@@ -11,6 +11,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.PlanIt">
+        <activity android:name=".AboutTask">
+        </activity>
+
         <service
                 android:name=".DeleteService"
                 android:enabled="true"

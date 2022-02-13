@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,7 +49,7 @@ public class MainActivity extends Activity {
             rl = findViewById(R.id.rl);
             tb.setTitle(R.string.plan_it_by_john_oye);
             setActionBar(tb);
-            
+
             tv.setTypeface(tf);
             ((TextView) findViewById(R.id.title)).setTypeface(tf);
             pd = new PlanDatabase(this);
@@ -111,7 +112,7 @@ public class MainActivity extends Activity {
                 finish();
                 break;
             case R.id.reload:
-                Toast.makeText(this, "Reloading...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Reloaded", Toast.LENGTH_SHORT).show();
                 recreate();
                 break;
         }
